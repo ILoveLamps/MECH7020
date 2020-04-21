@@ -180,9 +180,9 @@ def callback_laser(data):
 
 
 #  # PID GAINS AND VARIABLES
-kp = 0.35                       # proportional gain
-kd = 0.0                        # differential gain
-ki = 0.0                        # integral gain
+kp = 0.44                       # proportional gain
+kd = 0.44                       # differential gain
+ki = 0.44                       # integral gain
 e = 0.0                         # error in heading
 old_e = 0.0                     # variable to store previous error
 E = 0.0                         # integral error

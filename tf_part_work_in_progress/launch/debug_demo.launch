@@ -1,0 +1,9 @@
+  <launch>
+
+    <!-- Turtlesim Node-->
+
+    <node name="broadcast" pkg="ttbot_waypoint" type="broadcast.py" respawn="false" output="screen" >
+      <param name="turtle" type="string" value="tag" />
+    </node>
+
+  </launch>
