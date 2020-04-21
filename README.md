@@ -4,3 +4,4 @@ ROS (melodic) + turtlebot3 in gazebo
 04.09.20 : Added functionality for basic waypoint navigation
 04.16.20 : Added launch and world files for apriltags
 04.17.20 : Added preliminary results for the waypoint navigation ( path the bot took & angular velocity vs time)
+04.21.20 : Updated debug_demo.launch, broadcast.py, listen.py to v3
