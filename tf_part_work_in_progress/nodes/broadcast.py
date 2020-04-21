@@ -1,9 +1,22 @@
-#!/usr/bin/env python  
-import roslib
-roslib.load_manifest('ttbot_waypoint')
-import rospy
+#!/usr/bin/env python
+"""
+    04.20.20
+    Broadcast Node
+        1. Camera Feed Frame (april-tag detection)
+        2. TurtleBot3 Frame (odometry) 
+    - Hirdayesh Shrestha
+    - Matthew Postell
+    - Dhruv Patel
 
+"""
+import roslib
+import rospy
 import tf
+from tf.transformations import *
+import struct
+import numpy as np
+
+from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Pose, PoseWithCovariance
 from apriltag_ros.msg import AprilTagDetectionArray
 
@@ -21,24 +34,7 @@ from geometry_msgs.msg import (
 )
 
 
-from nav_msgs.msg import Odometry
-
-
-import struct
-import numpy as np
-
-import numpy as np
-
-import roslib
-from std_msgs.msg import (
-    Header,
-)
-from geometry_msgs.msg import (
-    PoseStamped,
-    Pose,
-    Quaternion,
-)
-from tf.transformations import *
+roslib.load_manifest('ttbot_waypoint')
 
 
 def find_marker(detections,marker_num):
@@ -91,7 +87,7 @@ def handle_tag_pose(msg):
     br.sendTransform((marker_t[0], marker_t[1], 0),
                      tf.transformations.quaternion_from_euler(0, 0, marker_t[2]),
                      rospy.Time.now(),
-		     "my_marker",
+		             "my_marker",
                      "world")
 
 
@@ -103,14 +99,17 @@ def handle_bot_pose(msg):
     br.sendTransform((pose.position.x, pose.position.y, 0),
                      tf.transformations.quaternion_from_euler(0, 0, pose.position.z),
                      rospy.Time.now(),
-		     "odom",
+		             "odom",
                      "world")
 
 
 
-
-
 if __name__ == '__main__':
+
+    # ******************************
+    #       Main Program Loop
+    # ******************************
+
     rospy.init_node('broadcast')
 
     global last_marker

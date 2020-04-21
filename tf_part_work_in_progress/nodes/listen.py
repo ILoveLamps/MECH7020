@@ -1,13 +1,29 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python
+"""
+    04.20.20
+    Listener Node
+    - Hirdayesh Shrestha
+    - Matthew Postell
+    - Dhruv Patel
+
+"""
+
 import roslib
-roslib.load_manifest('ttbot_waypoint')
 import rospy
 import math
 import tf
 import geometry_msgs.msg
 from nav_msgs.msg import Odometry
 
+roslib.load_manifest('ttbot_waypoint')
+
+
 if __name__ == '__main__':
+
+    # ******************************
+    #       Main Program Loop
+    # ******************************
+    
     rospy.init_node('listen')
 
     listener = tf.TransformListener()
