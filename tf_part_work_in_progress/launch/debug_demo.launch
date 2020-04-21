@@ -2,8 +2,15 @@
 
     <!-- Turtlesim Node-->
 
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch">
+    </include>
+
     <node name="broadcast" pkg="ttbot_waypoint" type="broadcast.py" respawn="false" output="screen" >
-      <param name="turtle" type="string" value="tag" />
+      <param name="publish_tf" type="string" value="tag" />
     </node>
+
+<!--     <node name="listen" pkg="ttbot_waypoint" type="listen.py" respawn="false" output="screen" > -->
+<!--       <param name="listen_tf" type="string" value="tag" /> -->
+<!--     </node> -->
 
   </launch>
