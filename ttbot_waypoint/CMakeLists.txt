@@ -49,6 +49,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   ttbot_nparray.msg
+  tag_array.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -100,12 +101,12 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
+#catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ttbot_waypoint
-   CATKIN_DEPENDS message_runtime
+#   CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
-)
+#)
 
 ###########
 ## Build ##

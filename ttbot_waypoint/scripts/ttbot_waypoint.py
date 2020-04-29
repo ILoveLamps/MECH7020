@@ -41,12 +41,12 @@ def ttbot_move():
         # # CONTROL ALGORITHM
         e = theta_goal - yaw                        # # error in heading
         if STATE == 0:                              # # initial rotation of robot
-            if abs(e) > 0.05:
+            if abs(e) > 0.02:
                 twist.angular.z = ttbot_pid()
                 # print("Target = {},  Current = {}, Error = {}".format(theta_goal, yaw, e))
             else:
                 print("\nINITIAL ROTATION COMPLETE")
-                twist.angular.z = 0.0
+                twist.angular.z = 0.03
                 STATE = 1
 
         elif STATE == 1:    # moving robot to waypoint
@@ -136,6 +136,7 @@ def odo_listen():
     rospy.Subscriber("/odom", Odometry, callback_odo)
 
 
+
 def angle_correction(angle):
     """"""
     """ Provides correction for negative angles
@@ -180,9 +181,9 @@ def callback_laser(data):
 
 
 #  # PID GAINS AND VARIABLES
-kp = 0.44                       # proportional gain
-kd = 0.44                       # differential gain
-ki = 0.44                       # integral gain
+kp = 0.35                       # proportional gain
+kd = 0.0                        # differential gain
+ki = 0.0                        # integral gain
 e = 0.0                         # error in heading
 old_e = 0.0                     # variable to store previous error
 E = 0.0                         # integral error
